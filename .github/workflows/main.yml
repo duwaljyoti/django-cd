@@ -12,7 +12,6 @@ concurrency:
 jobs:
   deploy:
     name: Deploy
-    needs: quality-assurance
     runs-on: ubuntu-latest
     steps:
       - name: Configure SSH
@@ -34,4 +33,4 @@ jobs:
           END
       - name: Run deploy
         run: |
-          ssh target "cd Cooking-Core/ && docker-compose down && git pull && docker-compose build && docker-compose up -d --force-recreate"
+          ssh target "cd django-with-cd/ && docker-compose down && git pull && docker-compose build && docker-compose up -d --force-recreate"
